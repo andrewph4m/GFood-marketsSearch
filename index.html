@@ -149,7 +149,7 @@
             position:'topright',		
             layer: markersLayer,
             initial: false,
-            zoom: 12,
+            zoom: 15,
             marker: false
         });
 
@@ -167,8 +167,10 @@
             var latLong = geojsonFeature.geometry.coordinates
 
 
-            marker = new L.Marker([latLong[1], latLong[0]], {title: title} );//se property searched
-            marker.bindPopup(title + ", " + locationSuburb);
+            marker = new L.Marker([latLong[1], latLong[0]], {title: title + ", " +locationSuburb, icon: farmer} );//se property searched
+            marker.bindPopup(  "<strong>" + geojsonFeature.properties.name + " </strong> <br>" +
+                geojsonFeature.properties.business_category + " <br>" +
+                geojsonFeature.properties.suburb );
             markersLayer.addLayer(marker);
             
             // var marker = L.marker([latLong[1], latLong[0]], {icon: farmer}, {title:title}).bindPopup(
